@@ -9,14 +9,13 @@ const getTrendingFilms = () => {
   });
 };
 
-// const getSearchMovies = q => {
-//   return axios
-//     .get(`/search/movie?api_key=${API_KEY}&page=1&query=${q}`)
-//     .then(data => {
-//       console.log(data);
-//       return data;
-//     });
-// };
+const getSearchMovies = q => {
+  return axios
+    .get(`/search/movie?api_key=${API_KEY}&query=${q}`)
+    .then(({ data }) => {
+      return data.results;
+    });
+};
 
 const getMovieDetails = id => {
   return axios.get(`/movie/${id}?api_key=${API_KEY}`).then(({ data }) => {
@@ -40,4 +39,10 @@ const getMovieReviews = id => {
     });
 };
 
-export { getTrendingFilms, getMovieDetails, getMovieCredits, getMovieReviews };
+export {
+  getTrendingFilms,
+  getMovieDetails,
+  getMovieCredits,
+  getMovieReviews,
+  getSearchMovies,
+};

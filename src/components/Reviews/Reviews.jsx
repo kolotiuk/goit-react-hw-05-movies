@@ -15,8 +15,6 @@ const Reviews = () => {
     return null;
   }
 
-  console.log(oneFilm);
-
   return (
     <div>
       <ul>

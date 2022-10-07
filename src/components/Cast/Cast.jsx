@@ -14,7 +14,6 @@ const Cast = () => {
   if (!oneFilm) {
     return null;
   }
-  console.log(oneFilm);
 
   return (
     <div>

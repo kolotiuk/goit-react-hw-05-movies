@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from 'services/theMoviedbApi';
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useParams,
+  useLocation,
+} from 'react-router-dom';
 
 const HomeDetailed = () => {
   const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
   const { homeId } = useParams();
   const [oneFilm, setOneFilm] = useState(null);
 
@@ -20,7 +26,7 @@ const HomeDetailed = () => {
 
   return (
     <div>
-      <Link to="/home">
+      <Link to={backLinkHref}>
         <button type="button">BACK</button>
       </Link>
       <p>
@@ -40,14 +46,10 @@ const HomeDetailed = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link to="cast" state={location.state}>
-              Cast
-            </Link>
+            <Link to="cast">Cast</Link>
           </li>
           <li>
-            <Link to="reviews" state={location.state}>
-              Reviews
-            </Link>
+            <Link to="reviews">Reviews</Link>
           </li>
         </ul>
         <Outlet />
