@@ -6,13 +6,12 @@ import { getSearchMovies } from 'services/theMoviedbApi';
 const MoviesSearch = ({ query }) => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (query) {
       getSearchMovies(query)
         .then(movie => setMovies(movie))
-        .catch(err => setError(err));
+        .catch(err => console.log(err));
     }
   }, [query]);
 
