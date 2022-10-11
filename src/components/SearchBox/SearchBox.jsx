@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const SearchBox = ({ onChange, changeSearch }) => {
+const SearchBox = ({ onChange }) => {
   const [input, setInput] = useState('');
 
   const handleChangeInput = e => {
@@ -10,7 +10,6 @@ const SearchBox = ({ onChange, changeSearch }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    changeSearch(input);
     onChange(input);
   };
 

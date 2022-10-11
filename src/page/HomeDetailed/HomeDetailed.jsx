@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from 'services/theMoviedbApi';
-import {
-  Link,
-  Outlet,
-  useParams,
-  useLocation,
-} from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 
 const HomeDetailed = () => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLinkHref = location.state?.from ?? '/';
   const { homeId } = useParams();
   const [oneFilm, setOneFilm] = useState(null);
 

@@ -1,7 +1,5 @@
 import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-// import HomePage from 'page/HomePage/HomePage';
-// import Movies from 'page/Movies/Movies';
 import { Layout } from './Layout/Layout';
 import HomeDetailed from '../page/HomeDetailed/HomeDetailed';
 import Cast from './Cast/Cast';
@@ -15,14 +13,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Navigate to={'home'} />} />
-        {/* <Route path="home" element={<HomePage />}>
-          <Route path=":homeId" element={<HomeDetailed />} />
-        </Route> */}
         <Route path="home" element={<HomePage />} />
-        {/* <Route path="home/:homeId" element={<HomeDetailed />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route> */}
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:homeId" element={<HomeDetailed />}>
           <Route path="cast" element={<Cast />} />

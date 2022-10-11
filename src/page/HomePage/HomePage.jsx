@@ -1,11 +1,5 @@
 import { Suspense, useEffect, useState } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useParams,
-  useLocation,
-} from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { getTrendingFilms } from 'services/theMoviedbApi';
 
 const HomePage = () => {
