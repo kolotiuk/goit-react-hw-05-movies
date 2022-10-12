@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const ButtonBack = ({ onClick }) => {
-  console.log('~ onClick', onClick);
   return <button onClick={onClick}>BACK</button>;
 };
 
