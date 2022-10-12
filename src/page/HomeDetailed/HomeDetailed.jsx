@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from 'services/theMoviedbApi';
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 
 const HomeDetailed = () => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const navigate = useNavigate();
+
+  console.log(location);
+
+  // const backLinkHref = location.state?.from ?? '/';
   const { homeId } = useParams();
   const [oneFilm, setOneFilm] = useState(null);
 
@@ -21,9 +31,10 @@ const HomeDetailed = () => {
 
   return (
     <div>
-      <Link to={backLinkHref}>
+      <button onClick={() => navigate(location?.state.from)}>BACK</button>
+      {/* <Link to={backLinkHref}>
         <button type="button">BACK</button>
-      </Link>
+      </Link> */}
       <p>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}` || null}
@@ -41,10 +52,14 @@ const HomeDetailed = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to={`cast`} state={{ from: location?.state.from }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to={`reviews`} state={{ from: location?.state.from }}>
+              Reviews
+            </Link>
           </li>
         </ul>
         <Outlet />

@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getTrendingFilms } from 'services/theMoviedbApi';
 
 const HomePage = () => {
@@ -20,15 +20,13 @@ const HomePage = () => {
         {films.length > 0 &&
           films.map(({ id, title, name }) => (
             <li key={id}>
-              <Link to={`/movies/${id}`} state={{ from: location }}>
+              <Link to={`/movies/${id}`} state={{ from: location.pathname }}>
                 {title || name}
               </Link>
             </li>
           ))}
       </ul>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <Suspense fallback={null}>{/* <Outlet /> */}</Suspense>
     </div>
   );
 };
