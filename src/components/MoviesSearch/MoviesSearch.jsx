@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getSearchMovies } from 'services/theMoviedbApi';
+import PropTypes from 'prop-types';
 
 const MoviesSearch = ({ query }) => {
   const location = useLocation();
@@ -10,7 +11,14 @@ const MoviesSearch = ({ query }) => {
   useEffect(() => {
     if (query) {
       getSearchMovies(query)
-        .then(movie => setMovies(movie))
+        .then(movie => {
+          if (!movie.length) {
+            alert('No one films');
+            setMovies([]);
+            return;
+          }
+          setMovies(movie);
+        })
         .catch(err => console.log(err));
     }
   }, [query]);
@@ -30,3 +38,7 @@ const MoviesSearch = ({ query }) => {
 };
 
 export default MoviesSearch;
+
+MoviesSearch.propTypes = {
+  query: PropTypes.string.isRequired,
+};

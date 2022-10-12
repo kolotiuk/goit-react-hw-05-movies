@@ -18,7 +18,9 @@ const Cast = () => {
   return (
     <div>
       <ul>
-        {oneFilm.length > 0 &&
+        {!oneFilm.length ? (
+          <div>We dont have any actors for this movie</div>
+        ) : (
           oneFilm.map(({ id, profile_path, character, original_name }) => (
             <li key={id}>
               <p>
@@ -30,7 +32,8 @@ const Cast = () => {
               <p>{original_name}</p>
               <p>{character}</p>
             </li>
-          ))}
+          ))
+        )}
       </ul>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy } from 'react';
 import { getMovieDetails } from 'services/theMoviedbApi';
 import {
   Link,
@@ -8,13 +8,13 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
+const ButtonBack = lazy(() => import('../../components/ButtonBack/ButtonBack'));
+
 const HomeDetailed = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(location);
-
-  // const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? '/';
   const { homeId } = useParams();
   const [oneFilm, setOneFilm] = useState(null);
 
@@ -31,10 +31,7 @@ const HomeDetailed = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(location?.state.from)}>BACK</button>
-      {/* <Link to={backLinkHref}>
-        <button type="button">BACK</button>
-      </Link> */}
+      <ButtonBack onClick={() => navigate(backLinkHref)} />
       <p>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}` || null}

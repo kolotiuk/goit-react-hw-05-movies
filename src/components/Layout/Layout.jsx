@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const getActiveStyle = prop => {
@@ -18,9 +18,7 @@ export const Layout = () => {
           Movies
         </NavLink>
       </nav>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <Outlet />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const SearchBox = ({ onChange }) => {
   const [input, setInput] = useState('');
@@ -24,3 +25,7 @@ const SearchBox = ({ onChange }) => {
 };
 
 export default SearchBox;
+
+SearchBox.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
